@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Edukasi Palestina</title>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4fff4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: var(--hijau-palestina);
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 240px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 30px auto 10px;
+      width: fit-content;
+      background: var(--hijau-palestina);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back-btn:hover {
+      background: var(--hijau-tua);
+    }
+
+    @media (max-width: 600px) {
+      iframe {
+        height: 200px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎥 Video Edukasi Palestina</h1>
+  </header>
+
+  <div class="container">
+    <h2>Tonton dan Sebarkan Kesadaran</h2>
+    <iframe src="https://www.youtube.com/embed/iRYbHOZzq7Q" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ATBbXM1IK1E" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/y9b3BX9nYuE" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/psRSl5bxqUQ" allowfullscreen></iframe>
+
+    <a href="edukasi.html" class="back-btn">🔙 Kembali ke Edukasi</a>
+  </div>
+
+</body>
+</html>

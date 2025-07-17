@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scan Barcode Produk</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Palestinian_Watermelon_Pattern.svg/800px-Palestinian_Watermelon_Pattern.svg.png') repeat;
+      background-size: 80px;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    #scanner-container {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: 3px solid var(--hijau-palestina);
+      border-radius: 16px;
+      margin: 20px 0;
+      background: #f5fff5;
+    }
+
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .pro-palestina { color: #2e7d32; }
+    .pro-israel { color: #d32f2f; }
+    .netral { color: #ff9800; }
+
+    .btn {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: var(--hijau-tua);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 20px; }
+      #hasil { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📷 Scan Barcode Produk</h1>
+    <p style="margin-top: 5px; font-size: 14px;">Deteksi apakah produk mendukung Palestina</p>
+  </header>
+
+  <div class="container">
+    <div id="scanner-container"></div>
+    <div id="hasil">Arahkan kamera ke barcode produk...</div>
+    <a href="index.html" class="btn">🔙 Kembali ke Beranda</a>
+  </div>
+
+  <script>
+    const defaultProduk = {
+      "8996001300018": { nama: "Indomie", status: "Pro Palestina" },
+      "123456789012": { nama: "Coca Cola", status: "Pro Israel" }
+    };
+
+    const userProduk = JSON.parse(localStorage.getItem("produkBoikot")) || {};
+    const dataProduk = { ...defaultProduk, ...userProduk };
+
+    function tampilkanHasil(kode) {
+      const hasilDiv = document.getElementById("hasil");
+      const produk = dataProduk[kode];
+
+      if (produk) {
+        let classStatus = "";
+        if (produk.status === "Pro Palestina") classStatus = "pro-palestina";
+        else if (produk.status === "Pro Israel") classStatus = "pro-israel";
+        else classStatus = "netral";
+
+        hasilDiv.innerHTML = `
+          Produk: <strong>${produk.nama}</strong><br>
+          Status: <span class="${classStatus}">${produk.status}</span>
+        `;
+      } else {
+        hasilDiv.innerHTML = `<span class="netral">Produk tidak ditemukan dalam database.</span>`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      Quagga.init({
+        inputStream: {
+          name: "Live",
+          type: "LiveStream",
+          target: document.querySelector('#scanner-container'),
+          constraints: { facingMode: "environment" }
+        },
+        decoder: {
+          readers: ["ean_reader", "upc_reader", "code_128_reader"]
+        }
+      }, err => {
+        if (err) {
+          console.error(err);
+          alert("Gagal mengakses kamera.");
+          return;
+        }
+        Quagga.start();
+      });
+
+      Quagga.onDetected(result => {
+        const kode = result.codeResult.code;
+        tampilkanHasil(kode);
+        Quagga.stop(); // hentikan setelah scan pertama
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Tambah Produk Boikot</title>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Palestinian_Watermelon_Pattern.svg/800px-Palestinian_Watermelon_Pattern.svg.png') repeat;
+      background-size: 80px;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .flag {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 36px;
+      height: auto;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--hijau-tua);
+    }
+
+    .output {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .error { color: red; }
+    .success { color: green; }
+
+    .back-btn {
+      display: block;
+      margin: 20px auto;
+      background: var(--hijau-palestina);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .back-btn:hover {
+      background: var(--hijau-tua);
+    }
+
+    #adminForm {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+
+      .flag {
+        width: 30px;
+        top: 12px;
+        right: 15px;
+      }
+
+      input, select, button {
+        font-size: 15px;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔐 Admin - Tambah Produk</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg" class="flag" alt="Bendera Palestina">
+</header>
+
+<div class="container">
+
+  <!-- Login Admin -->
+  <div class="card" id="loginCard">
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit">Masuk Admin</button>
+    </form>
+    <div class="output" id="loginOutput"></div>
+  </div>
+
+  <!-- Form Tambah Produk -->
+  <div class="card" id="adminForm">
+    <form id="formProduk">
+      <input type="text" id="barcode" placeholder="Barcode Produk" required>
+      <input type="text" id="namaProduk" placeholder="Nama Produk" required>
+      <select id="statusProduk" required>
+        <option value="">Pilih Status</option>
+        <option value="Pro Palestina">Pro Palestina</option>
+        <option value="Pro Israel">Pro Israel</option>
+        <option value="Netral">Netral</option>
+      </select>
+      <button type="submit">Simpan Produk</button>
+    </form>
+    <div class="output" id="produkOutput"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">🔙 Kembali ke Beranda</a>
+
+</div>
+
+<script>
+  const USERNAME = "SMAVENT";
+  const PASSWORD = "PEDULI PALESTINA";
+
+  const loginForm = document.getElementById("loginForm");
+  const loginOutput = document.getElementById("loginOutput");
+  const loginCard = document.getElementById("loginCard");
+  const adminForm = document.getElementById("adminForm");
+
+  loginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const user = document.getElementById("loginUsername").value.trim();
+    const pass = document.getElementById("loginPassword").value.trim();
+
+    if (user === USERNAME && pass === PASSWORD) {
+      loginCard.style.display = "none";
+      adminForm.style.display = "block";
+    } else {
+      loginOutput.innerHTML = "<div class='error'>❌ Username atau password salah!</div>";
+    }
+  });
+
+  const formProduk = document.getElementById("formProduk");
+  const produkOutput = document.getElementById("produkOutput");
+
+  formProduk.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const barcode = document.getElementById("barcode").value.trim();
+    const nama = document.getElementById("namaProduk").value.trim();
+    const status = document.getElementById("statusProduk").value;
+
+    if (!barcode || !nama || !status) {
+      produkOutput.innerHTML = "<div class='error'>❌ Harap lengkapi semua data produk.</div>";
+      return;
+    }
+
+    let db = JSON.parse(localStorage.getItem("produkBoikot")) || {};
+    db[barcode] = { nama, status };
+    localStorage.setItem("produkBoikot", JSON.stringify(db));
+
+    produkOutput.innerHTML = `<div class='success'>✅ Produk <strong>${nama}</strong> berhasil disimpan!</div>`;
+    formProduk.reset();
+  });
+</script>
+
+</body>
+</html>

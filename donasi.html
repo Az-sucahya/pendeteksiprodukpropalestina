@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donasi untuk Palestina</title>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Palestinian_Watermelon_Pattern.svg/800px-Palestinian_Watermelon_Pattern.svg.png') repeat;
+      background-size: 70px;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .flag {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      width: 36px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      color: var(--hijau-palestina);
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      margin: 12px 0;
+    }
+
+    .card ul li a {
+      text-decoration: none;
+      color: var(--hijau-tua);
+      font-weight: bold;
+    }
+
+    .card ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .share-btn {
+      display: block;
+      margin: 20px auto 10px;
+      text-align: center;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+      width: fit-content;
+    }
+
+    .share-btn:hover {
+      background-color: #1ebe5d;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto;
+      background: var(--hijau-palestina);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      background: var(--hijau-tua);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .flag {
+        width: 30px;
+        top: 10px;
+        right: 15px;
+      }
+
+      .card h2 {
+        font-size: 18px;
+      }
+
+      .share-btn {
+        font-size: 15px;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💖 Donasi untuk Palestina</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg" class="flag" alt="Bendera Palestina">
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Dukung Perjuangan Palestina</h2>
+    <p>Bantulah saudara-saudara kita di Palestina dengan berdonasi melalui lembaga resmi dan terpercaya berikut:</p>
+    <ul>
+      <li>🔗 <a href="https://kitabisa.com/campaign/palestina" target="_blank">Kitabisa - Donasi Palestina</a></li>
+      <li>🔗 <a href="https://act.id" target="_blank">Aksi Cepat Tanggap (ACT)</a></li>
+      <li>🔗 <a href="https://lazismu.org" target="_blank">Lazismu</a></li>
+      <li>🔗 <a href="https://rumahzakat.org" target="_blank">Rumah Zakat</a></li>
+    </ul>
+
+   
+  <div class="button-row">
+  <a href="index.html" class="back-btn">🔙 Kembali ke Beranda</a>
+  <a id="whatsappShareBtn" target="_blank">📤 Bagikan via WhatsApp</a>
+</div>
+
+
+<script>
+  document.getElementById("whatsappShareBtn").href =
+    "https://wa.me/?text=" + encodeURIComponent(
+      "Ayo bantu Palestina! 🌿\nDonasi sekarang melalui lembaga terpercaya:\nhttps://kitabisa.com/campaign/palestina\n#DonasiPalestina #FreePalestine"
+    );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio - AppKuisMavent</title>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Palestinian_Watermelon_Pattern.svg/800px-Palestinian_Watermelon_Pattern.svg.png') repeat;
+      background-size: 80px;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--hijau-palestina);
+    }
+
+    .card p {
+      margin: 10px 0;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      background-color: var(--hijau-palestina);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .card a:hover {
+      background-color: var(--hijau-tua);
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto;
+      width: fit-content;
+      background: var(--hijau-palestina);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      background: var(--hijau-tua);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .card h3 {
+        font-size: 18px;
+      }
+
+      .card a {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📁 Portofolio Karya</h1>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h3>About</Menu></h3>
+    <p>Web yang di kembangkan sebgai bentuk dukunganpenuh terhadap Palestina.</p>
+    <a href="about.html" target="_blank">Lihat</a>
+  </div>
+
+  <div class="card">
+    <h3>📚 Aplikasi Edukasi Palestina</h3>
+    <p>Menampilkan konten edukatif seputar Palestina, lengkap dengan video, fakta sejarah, dan fitur berbagi.</p>
+    <a href="edukasi.html" target="_blank">Lihat Edukasi</a>
+  </div>
+
+  <div class="card">
+    <h3>💖 Halaman Donasi Palestina</h3>
+    <p>Halaman khusus yang menyajikan tautan donasi terpercaya untuk mendukung rakyat Palestina.</p>
+    <a href="donasi.html" target="_blank">Lihat Donasi</a>
+  </div>
+
+  <div class="card">
+    <h3>📷 Pemindai Barcode Produk</h3>
+    <p>Fitur scan produk untuk mendeteksi apakah suatu produk Pro Palestina, Pro Israel, atau Netral.</p>
+    <a href="scanner.html" target="_blank">Mulai Scan</a>
+  </div>
+
+</div>
+
+<a href="index.html" class="back-btn">🔙 Kembali ke Beranda</a>
+
+</body>
+</html>
